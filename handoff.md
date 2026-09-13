@@ -7,17 +7,19 @@ Atlas 落地页：AI 运营体（Agent）编排平台——以 **Harness（能�
 
 Astro 7 静态站点（`output: 'static'`），中英双语（`/` 英文默认，`/zh/` 中文），React 19 island 预留可交互区，`@bay/landing-ui` 提供品牌返链与 GitHub Star 组件，design token 集中在 `src/styles/global.css` 的 `@layer tokens`。
 
-- 线上：`https://atlas.bayjf.com`（English）· `https://atlas.bayjf.com/zh/`（简体中文）**（域名待确认，见"下一步"）**
-- Pages 项目：`atlas-landing`（域名 `atlas-landing.pages.dev`）**（待创建）**
+- 线上：`https://atlas.bayjf.com`（English）· `https://atlas.bayjf.com/zh/`（简体中文）**（已上线）**
+- Pages 项目：`atlas-landing`（生产域名 `atlas.bayjf.com`，直连 `atlas-landing-9s8.pages.dev`）**（已创建并部署成功）**
 - 产品仓库：`https://github.com/bayernjf/atlas`（设计文档完成，代码未启动）
 
-## 当前状态（2026-09-13 骨架搭建）
+## 当前状态（2026-09-13 骨架搭建 + 上线）
 按 `agent-world-landing` 惯例搭建骨架（目录结构、元文档、i18n 双语文案、Astro 配置、构建截图脚本），内容基于产品仓库 `docs/01-PRD` 提取的真实产品信息；尚未实现完整视觉组件（Hero 之外的区块为骨架占位）。
 
 - 技术栈：Astro 7（SSG）+ React 19 island + `@bay/landing-ui` + `@astrojs/sitemap`；Node >= 22.12 / npm
 - 分支：`main`（骨架阶段直接提交 main，落地后转 dev/main 双分支流程）
 - 仓库：`https://github.com/bayernjf/atlas-landing`（PRIVATE，默认分支 main）
 - 验证：`npm run check` 22 文件 0 error/warning/hint；`npm run build` 7 页 + 双语 OG 截图成功；回读 dist HTML 确认双语 title / hreflang / og:image / llms.txt 命中
+- 部署：Cloudflare Pages 项目 `atlas-landing` 已创建并 Git 集成（production_branch=main，构建命令 `npx playwright install chromium && npm run build`，输出 `dist`，env `NODE_VERSION=22` / `PLAYWRIGHT_BROWSERS_PATH=0`，与 agent-world-landing 一致）；github:push 触发部署 `9239949d` clone/build/deploy 全绿；自定义域名 `atlas.bayjf.com` 已 active（HTTP 200，中文页 `/zh/` 200）。
+  - 踩坑记录：首次创建项目后两次部署 clone_repo 失败（私有仓库 GitHub 授权未就绪）；**删除项目重建后恢复正常**——新建 Pages 项目后若 clone 失败，优先尝试重建项目而非排查仓库权限。
 
 最近提交：
 - `b76226a` chore: add package-lock
@@ -47,7 +49,7 @@ Astro 7 静态站点（`output: 'static'`），中英双语（`/` 英文默认�
 - 产品侧选型未全部收口（T1-T5 待决策），落地页文案中的技术细节以 10 文档 §2 已定清单为准，勿提前承诺未定项。
 
 ## 下一步
-1. **owner 确认域名**：`atlas.bayjf.com` 是否启用；确认后在 Cloudflare Pages 创建 `atlas-landing` 项目并连 GitHub。
+1. ~~owner 确认域名并创建 Pages 项目~~ **已完成**：`atlas.bayjf.com` 已上线（deployment `9239949d` 全绿）。
 2. 骨架视觉迭代：按产品定位完成 Hero / 三支柱（Harness/Graph/Loop）/ 场景 / CTA 各区块的正式视觉（当前为基础占位），
    可交互区（沙盒 / 流程图预览）后续用 React island 实现。
 3. 文案随产品迭代同步，改产品时按上面的对账清单回来核对数字（尤其 Demo 范围、选型收口后）。

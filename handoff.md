@@ -16,6 +16,14 @@ Astro 7 静态站点（`output: 'static'`），中英双语（`/` 英文默认�
 
 - 技术栈：Astro 7（SSG）+ React 19 island + `@bay/landing-ui` + `@astrojs/sitemap`；Node >= 22.12 / npm
 - 分支：`main`（骨架阶段直接提交 main，落地后转 dev/main 双分支流程）
+- 仓库：`https://github.com/bayernjf/atlas-landing`（PRIVATE，默认分支 main）
+- 验证：`npm run check` 22 文件 0 error/warning/hint；`npm run build` 7 页 + 双语 OG 截图成功；回读 dist HTML 确认双语 title / hreflang / og:image / llms.txt 命中
+
+最近提交：
+- `b76226a` chore: add package-lock
+- `9d4cfee` feat(landing): add bilingual astro skeleton pages and assets
+- `a1afe03` docs: add handoff, agent conventions and deployment notes
+- `f45f933` chore: add astro landing scaffold config
 
 ## 数字型文案对账清单（产品迭代后优先核对，易过期）
 | 落地页表述 | 产品事实来源（atlas 仓库） |

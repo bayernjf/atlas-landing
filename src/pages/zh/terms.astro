@@ -1,0 +1,55 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hud from "../../components/Hud.astro";
+import Footer from "../../components/Footer.astro";
+import { getLangFromUrl, useTranslations, localizePath } from "../../i18n";
+import { SITE_NAME, SOCIAL } from "../../consts";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const home = localizePath("/", lang);
+
+const title = `${t("legal.terms.title")} | ${SITE_NAME}`;
+const description = `${SITE_NAME} 的服务条款：本站的合理使用约定。`;
+---
+
+<Layout title={title} description={description}>
+  <Hud />
+  <main class="doc">
+    <div class="shell">
+      <article class="panel doc__panel">
+        <div class="doc__bar">服务条款</div>
+        <div class="doc__body">
+          <h1>{t("legal.terms.title")}</h1>
+          <p class="doc__stamp">更新日期：2026 年 9 月 13 日</p>
+
+          <section>
+            <h2>一、合理使用</h2>
+            <p>
+              本站展示的产品处于设计阶段。站内内容仅用于信息说明，可能随时变更，恕不另行通知。
+            </p>
+          </section>
+
+          <section>
+            <h2>二、免责声明</h2>
+            <p>
+              本站及其内容按"现状"提供，不作任何形式的担保。所述产品尚未公开发布。
+            </p>
+          </section>
+
+          <section>
+            <h2>三、联系我们</h2>
+            <p>
+              对本条款的问题，可通过
+              <a href={SOCIAL.github}> GitHub 仓库</a> 的 Issues 提出。
+            </p>
+          </section>
+        </div>
+        <div class="doc__back">
+          <a class="btn btn--ghost" href={home}>回到首页</a>
+        </div>
+      </article>
+    </div>
+  </main>
+  <Footer />
+</Layout>

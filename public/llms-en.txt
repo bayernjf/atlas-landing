@@ -1,0 +1,97 @@
+# Atlas
+
+> An AI operator orchestration platform. Built on three deterministic primitives — Harness
+> (capability access), Graph (executable causal flow) and Loop (OODA-style self-adaptive
+> cycle) — Atlas lets non-technical people define workflows in natural language or by
+> drag-and-drop, then hands the whole loop to an operator that executes, self-heals and
+> evolves. Not a Copilot that suggests: an AutoPilot that owns the outcome.
+
+- Site: https://atlas.bayjf.com (English) · https://atlas.bayjf.com/zh/ (Simplified Chinese)
+- Product repo: https://github.com/bayernjf/atlas
+- Status: product in design stage (specs complete), demo roadmap scheduled, private beta intake open. This site is the product landing page.
+
+## Core concept: three primitives
+
+In Atlas, Harness / Graph / Loop are not metaphors — they are three deterministic technical primitives:
+
+- **Harness — the platform abstraction and capability integration bus.** Connects any product,
+  platform, API, UI or database into a standardized "operable object". Solves "where to operate"
+  and "what tool to use". One e-commerce Harness can drive a Shopify backend, a merchant console
+  and email, exposing a single unified `create_campaign` action upward.
+- **Graph — the executable structure of domain knowledge, business logic and task flow.**
+  Freezes "how work gets done": operation steps, decision branches, exception rules. Not a static
+  knowledge base but an executable causal directed graph — nodes are states/actions, edges are
+  conditions/events.
+- **Loop — the perpetual sense → plan → act → feedback cycle.** The LLM plans the next move under
+  Graph's constraints using live Harness data, executes, observes the result and adjusts — a
+  continuously optimizing operations flywheel.
+
+Relationship: Graph provides the script, Harness provides the stage and props, and Loop is the
+director who improvises and keeps rewriting the script.
+
+## Core value proposition
+
+| Value | Meaning |
+| --- | --- |
+| Replace, not assist | The operator owns a complete responsibility loop |
+| Connect anything | Harness adapts to Web / API / mobile / desktop / IoT |
+| DIY for everyone | Natural language, one-click templates, visual drag-and-drop, operation recording |
+| Keeps evolving | Loop reflection module + offline policy training |
+| Trustworthy autonomy | Human approval for sensitive actions, audit trail, sandbox testing |
+
+## Scenario landscape (7 classes)
+
+| Class | Typical use | Harness | Graph | Loop |
+| :--- | :--- | :--- | :--- | :--- |
+| 1. Instant manual replacement | Complex SaaS onboarding, medical device guidance | UI element recognition, guided highlighting | Task completion path (step tree + branches) | Detects stuck users in real time, adapts guidance |
+| 2. AI e-commerce ops | Omnichannel promotion, smart support, inventory | Merchant backends, ad APIs, ERP | Selection→listing→testing→ad spend→fulfillment→aftersales | Dynamic pricing, auto reorders, complaint alerts |
+| 3. Enterprise internal ops | Finance reconciliation, IT tickets, HR flows | Finance systems, OA, AD, HR SaaS | Approval flows, rules engines, SOP graphs | Auto-escalation, cross-system data completion, compliance review |
+| 4. IoT / hardware ops | Predictive maintenance, energy scheduling | Sensors, PLC, SCADA | Device state machines, fault trees | Predicts failures, triggers work orders, reschedules |
+| 5. Quant finance & risk | Auto trading execution, credit monitoring | Trading APIs, market data, credit feeds | Factor selection→order→stop-loss graph | Real-time anomaly monitoring, defensive switching |
+| 6. Content & growth | Omnichannel social automation, SEO | Official account consoles, search APIs | Topic→create→distribute→recover→optimize | Variant generation from viral patterns, A/B scheduling |
+| 7. Education & assessment | Adaptive learning paths, smart exam assembly | LMS, question banks | Knowledge dependency graphs, ability models | Dynamically adjusts pacing and difficulty |
+
+## Demo focus scenes (8-10 week minimal viable loop)
+
+- **Scene A: automated e-commerce refunds (first pick)** — Trigger: new refund request; Harness:
+  Shopify API + Web ops; Graph: reason check→amount check→approve/auto-refund→notify; Loop:
+  failure self-healing, policy optimization.
+- **Scene B: in-app SaaS guidance** — Trigger: user clicks "help"; Harness: browser ops (highlight,
+  click, type); Graph: task path tree; Loop: adapts guidance to where the user gets stuck.
+
+## DIY output mechanism (layered)
+
+1. **Hand-holding teaching** — describe the goal; the system records a capability demo through
+   Harness and auto-generates the Graph skeleton.
+2. **Natural language as config** — e.g. "every morning at 9 export yesterday's orders from ERP,
+   group by city, warn the owner if any city exceeds 100 orders with >5% negative reviews": parsed
+   into target objects, mapped to Harness tools, orchestrated into a Graph with a scheduled Loop.
+3. **Modular lego assembly** — four component classes (sense / decide / act / learn), drag and
+   connect to define the flywheel. All DIY output exports to a standardized "operator image file"
+   that can be copied, shared and ported across platforms.
+
+## Tech foundation (decided selections)
+
+Python 3.11+ engine / LangChain + LangGraph (executable graph and cycles) / LiteLLM (model access) /
+Playwright (browser operation) / PostgreSQL + pgvector (storage and vectors) / Redis / FastAPI
+(demo gateway) / TS + React 18 frontend / React Flow + Zustand (visual editor). First enterprise
+target scenario: OA approval flows.
+
+## Differentiators
+
+- Three deterministic primitives instead of ad-hoc agent assembly; access, flow and loop layers
+  evolve independently.
+- Hard constraints on critical paths: Graph-enforced step validation; sensitive actions require
+  confirmation or sandbox limits — hallucination is controlled in finance/medical-grade scenarios.
+- Self-healing Loop: on operation failure, automatically detects UI changes, updates the element
+  location Graph, and notifies the user.
+- Test cockpit: runs in a shadow system in parallel and only switches to production after results
+  match.
+- Generality is the product: seven scenario classes share one runtime; Harness adapters and Graph
+  templates accumulate into an ecosystem platform.
+
+## Private beta
+
+First seats go to teams with real enterprise workflow automation needs. The product is in design
+stage; batch scheduling to be announced. Follow the product repo to track the W1-W10 demo
+milestones.

@@ -1,0 +1,73 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const github = "https://github.com/bayernjf/atlas";
+---
+
+<section class="cta" id="cta">
+  <div class="shell">
+    <div class="cta__panel" data-reveal>
+      <h2 class="cta__title">{t("cta.title")}</h2>
+      <p class="cta__sub">{t("cta.sub")}</p>
+      <div class="cta__actions">
+        <a class="btn btn--primary" href={github} rel="noopener" target="_blank">
+          {t("cta.button")}
+        </a>
+      </div>
+      <p class="cta__note">{t("cta.note")}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    padding: 72px 0 60px;
+  }
+  .cta__panel {
+    position: relative;
+    padding: 56px 48px;
+    text-align: center;
+    border: 1px solid var(--steel-600);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(53, 224, 240, 0.08), transparent 55%),
+      var(--steel-900);
+    box-shadow: var(--bevel-deep);
+    overflow: hidden;
+  }
+  .cta__panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--graph), var(--harness), transparent);
+    opacity: 0.5;
+  }
+  .cta__title {
+    font-size: clamp(26px, 3.4vw, 38px);
+    letter-spacing: -0.02em;
+  }
+  .cta__sub {
+    max-width: 34em;
+    margin: 18px auto 0;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--ink-dim);
+  }
+  .cta__actions {
+    margin-top: 30px;
+  }
+  .cta__note {
+    margin-top: 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+
+  @media (max-width: 640px) {
+    .cta__panel { padding: 40px 22px; }
+  }
+</style>

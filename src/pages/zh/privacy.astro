@@ -1,0 +1,64 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hud from "../../components/Hud.astro";
+import Footer from "../../components/Footer.astro";
+import { getLangFromUrl, useTranslations, localizePath } from "../../i18n";
+import { SITE_NAME, SOCIAL } from "../../consts";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const home = localizePath("/", lang);
+
+const title = `${t("legal.privacy.title")} | ${SITE_NAME}`;
+const description = `${SITE_NAME} 的隐私政策：说明访问本站时相关信息的处理方式。`;
+---
+
+<Layout title={title} description={description}>
+  <Hud />
+  <main class="doc">
+    <div class="shell">
+      <article class="panel doc__panel">
+        <div class="doc__bar">隐私政策</div>
+        <div class="doc__body">
+          <h1>{t("legal.privacy.title")}</h1>
+          <p class="doc__stamp">更新日期：2026 年 9 月 13 日</p>
+
+          <section>
+            <h2>一、概述</h2>
+            <p>
+              {SITE_NAME}（"本站"）是产品介绍网站。本政策说明访问本站时相关信息的处理方式。使用本站即视为同意本政策条款。
+            </p>
+          </section>
+
+          <section>
+            <h2>二、我们处理的信息</h2>
+            <ul>
+              <li>本站为静态站点，不提供账号注册，不收集个人身份信息。</li>
+              <li>若后续增加内测申请表单，所提交的联系方式仅用于发送产品通知。</li>
+              <li>托管平台（Cloudflare Pages）可能依据其自身政策记录基础访问日志，不在我们控制范围内。</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>三、Cookie 与本地存储</h2>
+            <p>
+              本站可能使用浏览器 Cookie 或 localStorage 记忆界面偏好（如语言）。仅用于改善浏览体验，绝不用于跨站追踪。
+            </p>
+          </section>
+
+          <section>
+            <h2>四、联系我们</h2>
+            <p>
+              对本政策的问题，可通过
+              <a href={SOCIAL.github}> GitHub 仓库</a> 的 Issues 提出。
+            </p>
+          </section>
+        </div>
+        <div class="doc__back">
+          <a class="btn btn--ghost" href={home}>回到首页</a>
+        </div>
+      </article>
+    </div>
+  </main>
+  <Footer />
+</Layout>

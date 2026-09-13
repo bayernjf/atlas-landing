@@ -1,0 +1,58 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hud from "../components/Hud.astro";
+import Footer from "../components/Footer.astro";
+import { getLangFromUrl, useTranslations, localizePath } from "../i18n";
+import { SITE_NAME, SOCIAL } from "../consts";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const home = localizePath("/", lang);
+
+const title = `${t("legal.terms.title")} | ${SITE_NAME}`;
+const description = `Terms of Service of ${SITE_NAME}: acceptable use of the site.`;
+---
+
+<Layout title={title} description={description}>
+  <Hud />
+  <main class="doc">
+    <div class="shell">
+      <article class="panel doc__panel">
+        <div class="doc__bar">TERMS OF SERVICE</div>
+        <div class="doc__body">
+          <h1>{t("legal.terms.title")}</h1>
+          <p class="doc__stamp">Last updated: September 13, 2026</p>
+
+          <section>
+            <h2>1. Acceptable Use</h2>
+            <p>
+              The {SITE_NAME} site presents a product that is under design. Content on this
+              site is provided for informational purposes and may change at any time without
+              notice.
+            </p>
+          </section>
+
+          <section>
+            <h2>2. No Warranty</h2>
+            <p>
+              The site and its content are provided "as is" without warranties of any kind.
+              The product described is not yet generally available.
+            </p>
+          </section>
+
+          <section>
+            <h2>3. Contact</h2>
+            <p>
+              Questions about these terms can be raised via Issues on our
+              <a href={SOCIAL.github}> GitHub repository</a>.
+            </p>
+          </section>
+        </div>
+        <div class="doc__back">
+          <a class="btn btn--ghost" href={home}>{lang === "zh" ? "回到首页" : "Back to base"}</a>
+        </div>
+      </article>
+    </div>
+  </main>
+  <Footer />
+</Layout>

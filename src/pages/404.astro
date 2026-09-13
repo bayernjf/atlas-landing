@@ -1,0 +1,85 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hud from "../components/Hud.astro";
+import { getLangFromUrl, localizePath } from "../i18n";
+import { SITE_NAME } from "../consts";
+
+const lang = getLangFromUrl(Astro.url);
+const home = localizePath("/", lang);
+
+const title = `404: Page Not Found | ${SITE_NAME}`;
+---
+
+<Layout title={title}>
+  <Hud />
+  <main class="lost">
+    <div class="shell">
+      <div class="panel lost__panel">
+        <div class="lost__bar">
+          <span>404 · route not found</span>
+          <span class="led" data-c="alert" aria-hidden="true"></span>
+        </div>
+        <div class="lost__body">
+          <p class="lost__eyebrow">unmapped graph node</p>
+          <h1 class="lost__title">404</h1>
+          <p class="lost__sub">
+            {lang === "zh" ? "这个地址不在运营图上。回到首页，从那里重新出发。" : "This address is not on the operations map. Head back to the console and start from there."}
+          </p>
+          <a class="btn btn--primary" href={home}>{lang === "zh" ? "回到首页" : "Back to base"}</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .lost {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding: 120px 0 96px;
+  }
+  .lost__panel {
+    max-width: 620px;
+    border: 1px solid var(--steel-600);
+    background: var(--steel-900);
+    box-shadow: var(--bevel);
+  }
+  .lost__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--steel-600);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--ink-faint);
+  }
+  .lost__body {
+    padding: 40px 32px 42px;
+  }
+  .lost__eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+  }
+  .lost__title {
+    margin-top: 12px;
+    font-size: clamp(48px, 7vw, 72px);
+    background: linear-gradient(92deg, var(--graph), var(--harness));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .lost__sub {
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--ink-dim);
+  }
+  .lost__body .btn {
+    margin-top: 28px;
+  }
+</style>

@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hud from "../components/Hud.astro";
+import Footer from "../components/Footer.astro";
+import { getLangFromUrl, useTranslations, localizePath } from "../i18n";
+import { SITE_NAME, SOCIAL } from "../consts";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const home = localizePath("/", lang);
+
+const title = `${t("legal.privacy.title")} | ${SITE_NAME}`;
+const description = `Privacy Policy of ${SITE_NAME}: how information related to your visit is handled.`;
+---
+
+<Layout title={title} description={description}>
+  <Hud />
+  <main class="doc">
+    <div class="shell">
+      <article class="panel doc__panel">
+        <div class="doc__bar">PRIVACY POLICY</div>
+        <div class="doc__body">
+          <h1>{t("legal.privacy.title")}</h1>
+          <p class="doc__stamp">Last updated: September 13, 2026</p>
+
+          <section>
+            <h2>1. Overview</h2>
+            <p>
+              {SITE_NAME} (the "Site") is a product introduction website. This policy
+              explains how information related to your visit is handled. By using the Site
+              you agree to the terms of this policy.
+            </p>
+          </section>
+
+          <section>
+            <h2>2. Information We Handle</h2>
+            <ul>
+              <li>The Site is static and offers no account registration; it does not collect personally identifiable information.</li>
+              <li>If an early-access form is added later, submitted contact details will be used only to send product notices.</li>
+              <li>The hosting platform (Cloudflare Pages) may record basic access logs under its own policies, outside our control.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>3. Cookies &amp; Local Storage</h2>
+            <p>
+              The Site may use browser cookies or localStorage to remember interface
+              preferences such as language. These are used solely to improve browsing and
+              never for cross-site tracking.
+            </p>
+          </section>
+
+          <section>
+            <h2>4. Contact</h2>
+            <p>
+              Questions about this policy can be raised via Issues on our
+              <a href={SOCIAL.github}> GitHub repository</a>.
+            </p>
+          </section>
+        </div>
+        <div class="doc__back">
+          <a class="btn btn--ghost" href={home}>{lang === "zh" ? "回到首页" : "Back to base"}</a>
+        </div>
+      </article>
+    </div>
+  </main>
+  <Footer />
+</Layout>

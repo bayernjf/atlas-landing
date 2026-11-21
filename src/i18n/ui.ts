@@ -75,6 +75,7 @@ export const ui = {
     "foot.nav.pillars": "The three primitives",
     "foot.nav.scenarios": "Scenarios",
     "foot.nav.cta": "Early access",
+    "foot.nav.case": "Case study",
     "foot.nav.privacy": "Privacy",
     "foot.nav.terms": "Terms",
 
@@ -150,6 +151,7 @@ export const ui = {
     "foot.nav.pillars": "三大基元",
     "foot.nav.scenarios": "应用场景",
     "foot.nav.cta": "内测申请",
+    "foot.nav.case": "案例页",
     "foot.nav.privacy": "隐私政策",
     "foot.nav.terms": "服务条款",
 

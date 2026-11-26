@@ -2,6 +2,19 @@
 
 更新时间：2026-09-13
 
+## 待办登记（标准）
+
+> 本段是本仓唯一活跃待办入口；详细背景见下方原有章节。
+> 最近同步：2026-11-26
+
+<!-- tier:todos v1 -->
+| id | title | status | priority | owner | next | evidence | updated |
+|---|---|---|---|---|---|---|---|
+| ATL-01 | 骨架视觉迭代 | open | p1 | self | 完成 Hero / 三支柱 / 场景 / CTA 正式视觉；可交互区后续用 React island | `handoff.md` 下一步 2 | 2026-09-13 |
+| ATL-02 | 文案随 atlas 产品迭代对账 | open | p2 | self | 按 `## 数字型文案对账清单` 核对 | `handoff.md` 对账清单 | 2026-09-13 |
+| ATL-03 | 与 hub 产品卡封面一致 | open | p3 | self | 引用构建产出的 preview.png | `handoff.md` 下一步 4 | 2026-09-13 |
+<!-- /tier:todos -->
+
 ## 项目概况
 Atlas 落地页：AI 运营体（Agent）编排平台——以 **Harness（能力接入）/ Graph（可执行因果图）/ Loop（OODA 主循环）** 三位一体为内核，让非技术人员通过自然语言 / 拖拽定义流程，由运营体自动执行、自愈与进化。首个目标场景：企业内部 OA 审批。
 
